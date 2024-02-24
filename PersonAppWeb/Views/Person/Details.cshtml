@@ -1,0 +1,69 @@
+﻿@model PersonAppWeb.Models.PersonViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<h1>Details</h1>
+<h4><a asp-action="Index"><i class="bi bi-arrow-return-left"></i> Back to List</a></h4>
+
+
+
+<div class="container-lg">
+    <h4>Teacher Info - Page 2</h4>
+
+    <div class="col-md-12">
+
+        <div class="col-md-46">
+            <div class="row">
+              <h3>Name: @Html.DisplayFor(modelItem => modelItem.Name)</h3>
+            </div>
+        </div>
+
+        <div class="col-md-46">
+            <div class="row">
+                <h3>ID: @Html.DisplayFor(modelItem => modelItem.ID)</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="row">
+                <h3>Type: @Html.DisplayFor(modelItem => modelItem.Description)</h3>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-md-12">
+
+        </div>
+    
+
+        <canvas id="myChart" style="width:100%"></canvas>
+
+  
+</div>
+
+<script>
+    var xValues = ["01/10/2014", "02/10/2014", "03/10/2014", "04/10/2014", "05/10/2014", "06/10/2014", "07/10/2014", "08/10/2014"];
+    var yValues = [14, 17, 20, 30, 40, 50, 60, 70];
+    var barColors = ["#5e87f5", "#4e69c3", "#3d4b91", "#2d2c5e", "#1d0e2c", "#43b0f1", "#057dcd", "#1e3d58"];
+
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: "Record Chart"
+            }
+        }
+    });
+</script>
+
